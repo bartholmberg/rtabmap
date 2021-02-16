@@ -21,7 +21,9 @@ SET(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake_modules")
 list(APPEND CMAKE_MODULE_PATH "C:/repo/PCL/cmake/Modules")
 list(APPEND PCL_INCLUDE_DIRS "C:/repo/PCL/cmake/Modules")
 set( PCL_VISUALIZATION_INCLUDE_DIR "C:/repo/PCL/include/pcl-1.11/pcl")
+list(APPEND	PCL_VISUALIZATION_INCLUDE_DIR "C:/repo/akinectSdk/sdk/include")
 set( PCL_VISUALIZATION_LIBRARY "C:/repo/PCL/lib")
+list( APPEND PCL_VISUALIZATION_LIBRARY "C:/repo/akinectSdk/sdk/windows-desktop/amd64/release/lib" )
 #######################
 # VERSION
 #######################
