@@ -1,3 +1,6 @@
+if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+  set(CMAKE_INSTALL_PREFIX "c:/repo/PCL/rtabmap" CACHE PATH "..." FORCE)
+endif()
 
 SET(SRC_FILES
     main.cpp
@@ -7,6 +10,8 @@ SET(INCLUDE_DIRS
 	${PROJECT_SOURCE_DIR}/utilite/include
 	${PROJECT_SOURCE_DIR}/corelib/include
 	${PROJECT_SOURCE_DIR}/guilib/include
+    C:/repo/akinectSdk/sdk/include/
+    C:/repo/slam_ws/pcl/visualization/include
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${OpenCV_INCLUDE_DIRS}
     ${PCL_INCLUDE_DIRS}

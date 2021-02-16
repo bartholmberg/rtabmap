@@ -3,8 +3,10 @@
 cmake_minimum_required(VERSION 2.8.5)
 PROJECT( RTABMap )
 SET(PROJECT_PREFIX rtabmap)
-
-# Catkin doesn't support multiarch library path, 
+message(STATUS ".................1 CMAKE_MODULE_PATH:     ${CMAKE_MODULE_PATH}")
+message(STATUS ".................2 PCL_INCLUDE_DIRS:     ${PCL_INCLUDE_DIRS}")
+message(STATUS ".................3 RTABMap_INCLUDE_DIRS  ${RTABMap_INCLUDE_DIRS}")
+# Catkin doesn't support multiarch library path,
 # fix to "lib" if not set by user.
 OPTION(MULTI_ARCH "Activate multi-arch lib directory (debian)" OFF)
 IF(NOT MULTI_ARCH AND NOT DEFINED CMAKE_INSTALL_LIBDIR)
@@ -15,7 +17,7 @@ INCLUDE(GNUInstallDirs)
 
 ####### local cmake modules #######
 SET(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake_modules")
-
+list(APPEND CMAKE_MODULE_PATH "C:/repo/PCL/cmake/Modules")
 #######################
 # VERSION
 #######################
@@ -53,7 +55,7 @@ IF(FLANN_KDTREE_MEM_OPT)
 ENDIF(FLANN_KDTREE_MEM_OPT)
 
 IF(WIN32 AND NOT MINGW)
-    ADD_DEFINITIONS("-DNOMINMAX")
+    ADD_DEFINITIONS("-DNOMINMAX -DRTABMAP_K4A")
     ADD_DEFINITIONS("-wd4100 -wd4127 -wd4150 -wd4191 -wd4242 -wd4244 -wd4251 -wd4305 -wd4365 -wd4512 -wd4514 -wd4548 -wd4571 -wd4619 -wd4625 -wd4626 -wd4628 -wd4668 -wd4710 -wd4711 -wd4738 -wd4820 -wd4946 -wd4986")
 ELSE ()
     ADD_DEFINITIONS( "-Wall" )
@@ -103,8 +105,8 @@ if(MSVC)
   endif()
 endif()
 
-# [Eclipse] Automatic Discovery of Include directories (Optional, but handy) 
-#SET(CMAKE_VERBOSE_MAKEFILE ON)
+# [Eclipse] Automatic Discovery of Include directories (Optional, but handy)
+SET(CMAKE_VERBOSE_MAKEFILE ON)
 
 #Other paths...
 IF(APPLE)
@@ -115,6 +117,11 @@ ENDIF()
 
 ####### Build libraries as shared or static #######
 OPTION( BUILD_SHARED_LIBS "Set to OFF to build static libraries" ON )
+
+message(STATUS ".................1 CMAKE_MODULE_PATH:     ${CMAKE_MODULE_PATH}")
+message(STATUS ".................2 PCL_INCLUDE_DIRS:     ${PCL_INCLUDE_DIRS}")
+message(STATUS ".................3 RTABMap_INCLUDE_DIRS  ${RTABMap_INCLUDE_DIRS}")
+
 
 
 ####### OUTPUT DIR #######
@@ -163,15 +170,13 @@ ELSE()
 option(WITH_QT            "Include Qt support"                   ON)
 ENDIF()
 option(WITH_ORB_OCTREE    "Include ORB Octree feature support"   ON)
-option(WITH_TORCH         "Include Torch support (SuperPoint)"   OFF)
-option(WITH_PYTHON        "Include Python3 support (PyMatcher, PyDetector)"  OFF)
-option(WITH_PYTHON_THREADING  "Use more than one Python interpreter."  OFF)
-option(WITH_PDAL          "Include PDAL support"                 ON)
-option(WITH_FREENECT      "Include Freenect support"             ON)
-option(WITH_FREENECT2     "Include Freenect2 support"            ON)
-option(WITH_K4W2          "Include Kinect for Windows v2 support" ON)
+option(WITH_SUPERPOINT_TORCH  "Include SuperPoint Torch feature support"   ON)
+option(WITH_PYMATCHER     "Include Python3 matchers support"     OFF)
+option(WITH_FREENECT      "Include Freenect support"             OFF)
+option(WITH_FREENECT2     "Include Freenect2 support"            OFF)
+option(WITH_K4W2          "Include Kinect for Windows v2 support" OFF)
 option(WITH_K4A           "Include Kinect for Azure support"     ON)
-option(WITH_OPENNI2       "Include OpenNI2 support"              ON)
+option(WITH_OPENNI2       "Include OpenNI2 support"              OFF)
 option(WITH_DC1394        "Include dc1394 support"               ON)
 option(WITH_G2O           "Include g2o support"                  ON)
 option(WITH_GTSAM         "Include GTSAM support"                ON)
@@ -182,10 +187,10 @@ option(WITH_CVSBA         "Include cvsba support"                ON)
 option(WITH_POINTMATCHER  "Include libpointmatcher support"      ON)
 option(WITH_LOAM          "Include LOAM support"                 ON)
 option(WITH_FLYCAPTURE2   "Include FlyCapture2/Triclops support" ON)
-option(WITH_ZED           "Include ZED sdk support"              ON)
-option(WITH_REALSENSE     "Include RealSense support"            ON)
-option(WITH_REALSENSE_SLAM "Include RealSenseSlam support"       ON)
-option(WITH_REALSENSE2    "Include RealSense support"            ON)
+option(WITH_ZED           "Include ZED sdk support"              OFF)
+option(WITH_REALSENSE     "Include RealSense support"            OFF)
+option(WITH_REALSENSE_SLAM "Include RealSenseSlam support"       OFF)
+option(WITH_REALSENSE2    "Include RealSense support"            OFF)
 option(WITH_MYNTEYE       "Include mynteye-s support"            ON)
 option(WITH_OCTOMAP       "Include Octomap support"              ON)
 option(WITH_CPUTSDF       "Include CPUTSDF support"              ON)
@@ -1427,3 +1432,6 @@ MESSAGE(SEND_ERROR "No graph optimizer found! You should have at least one of th
 ENDIF(NOT GTSAM_FOUND AND NOT G2O_FOUND AND NOT WITH_TORO AND NOT CERES_FOUND)
 
 # vim: set et ft=cmake fenc=utf-8 ff=unix sts=0 sw=2 ts=2 :
+message(STATUS ".................1 CMAKE_MODULE_PATH:     ${CMAKE_MODULE_PATH}")
+message(STATUS ".................2 PCL_INCLUDE_DIRS:     ${PCL_INCLUDE_DIRS}")
+message(STATUS ".................3 RTABMap_INCLUDE_DIRS  ${RTABMap_INCLUDE_DIRS}")
