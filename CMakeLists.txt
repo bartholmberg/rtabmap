@@ -2,6 +2,7 @@
 # For GNUInstallDirs
 cmake_minimum_required(VERSION 2.8.5)
 PROJECT( RTABMap )
+SET(CMAKE_VERBOSE_MAKEFILE ON)
 SET(PROJECT_PREFIX rtabmap)
 message(STATUS ".................1 CMAKE_MODULE_PATH:     ${CMAKE_MODULE_PATH}")
 message(STATUS ".................2 PCL_INCLUDE_DIRS:     ${PCL_INCLUDE_DIRS}")
@@ -19,6 +20,8 @@ INCLUDE(GNUInstallDirs)
 SET(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake_modules")
 list(APPEND CMAKE_MODULE_PATH "C:/repo/PCL/cmake/Modules")
 list(APPEND PCL_INCLUDE_DIRS "C:/repo/PCL/cmake/Modules")
+set( PCL_VISUALIZATION_INCLUDE_DIR "C:/repo/PCL/include/pcl-1.11/pcl")
+set( PCL_VISUALIZATION_LIBRARY "C:/repo/PCL/lib")
 #######################
 # VERSION
 #######################
