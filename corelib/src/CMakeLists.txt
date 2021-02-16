@@ -140,6 +140,7 @@ SET(INCLUDE_DIRS
     ${PROJECT_SOURCE_DIR}/utilite/include
 	${CMAKE_CURRENT_SOURCE_DIR}/../include
 	${CMAKE_CURRENT_SOURCE_DIR}
+	C:/repo/akinectSdk/sdk/include
 	${CMAKE_CURRENT_BINARY_DIR}
     ${OpenCV_INCLUDE_DIRS}
 	${PCL_INCLUDE_DIRS}

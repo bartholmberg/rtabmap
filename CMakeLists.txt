@@ -20,7 +20,7 @@ INCLUDE(GNUInstallDirs)
 SET(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake_modules")
 list(APPEND CMAKE_MODULE_PATH "C:/repo/PCL/cmake/Modules")
 list(APPEND PCL_INCLUDE_DIRS "C:/repo/PCL/cmake/Modules")
-set( PCL_VISUALIZATION_INCLUDE_DIR "C:/repo/PCL/include/pcl-1.11/pcl")
+set( PCL_VISUALIZATION_INCLUDE_DIR "C:/repo/PCL/include/pcl-1.11")
 set( PCL_VISUALIZATION_LIBRARY "C:/repo/PCL/lib")
 #######################
 # VERSION
@@ -118,7 +118,6 @@ IF(APPLE)
    SET(CMAKE_INCLUDE_PATH "/opt/local/include;${CMAKE_INCLUDE_PATH}")
    SET(CMAKE_LIBRARY_PATH "/opt/local/lib;${CMAKE_LIBRARY_PATH}")
 ENDIF()
-
 ####### Build libraries as shared or static #######
 OPTION( BUILD_SHARED_LIBS "Set to OFF to build static libraries" ON )
 
@@ -1436,6 +1435,8 @@ MESSAGE(SEND_ERROR "No graph optimizer found! You should have at least one of th
 ENDIF(NOT GTSAM_FOUND AND NOT G2O_FOUND AND NOT WITH_TORO AND NOT CERES_FOUND)
 
 # vim: set et ft=cmake fenc=utf-8 ff=unix sts=0 sw=2 ts=2 :
+list(  APPEND CMAKE_INCLUDE_PATH "C:/repo/akinectSdk/sdk/include")
+#list(  APPEND CMAKE_INCLUDE_PATH  "C:/repo/PCL/include/pcl-1.11")
 message(STATUS ".................1 CMAKE_MODULE_PATH:     ${CMAKE_MODULE_PATH}")
 message(STATUS ".................2 PCL_INCLUDE_DIRS:     ${PCL_INCLUDE_DIRS}")
 message(STATUS ".................3 RTABMap_INCLUDE_DIRS  ${RTABMap_INCLUDE_DIRS}")
